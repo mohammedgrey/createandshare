@@ -3,6 +3,7 @@ import "./Login.css";
 import { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,23 +12,39 @@ const Login = (props) => {
     console.log(email, password);
 
     axios
-      .post("http://127.0.0.1:8000/api/v1/users/login", {
-        email,
-        password,
-      })
+      .post("/users/login", { email, password }, { withCredentials: true })
       .then(
         (res) => {
           //redirect
           console.log(res.data.token);
-          console.log(props.history);
-          props.history.replace("./explore");
+          // console.log(props.history);
+
+          window.location.reload(true);
         },
         (error) => {
-          console.log(error.response.status);
+          console.log(error);
           if (error.response.status === 401)
             alert("Incorrect email or password");
         }
       );
+
+    // axios
+    //   .get("/posts/me", {
+    //     withCredentials: true,
+    //   })
+    //   .then(
+    //     (res) => {
+    //       //redirect
+    //       console.log(res.data);
+    //       // console.log(props.history);
+    //       // props.history.replace("./explore");
+    //     },
+    //     (error) => {
+    //       console.log(error);
+    //       // if (error.response.status === 401)
+    //       //   alert("Incorrect email or password");
+    //     }
+    //   );
   };
   return (
     <div className="Login">

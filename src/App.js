@@ -1,20 +1,35 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
 import LandingPage from "./Components/LandingPage";
-import Profile from "./Components/Profile";
-import Explore from "./Components/Explore";
+import isLoggedIn from "./Functions/isLoggedIn";
+import { useState, useEffect } from "react";
+import InsidePages from "./Components/InsidePages";
 
 function App() {
-  return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/explore" component={Explore} />
-      </Switch>
-    </div>
-  );
+  const [loading, setLoading] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    console.log("entered useEffect");
+    // setLoading(true);
+    isLoggedIn().then((res) => {
+      console.log("loading should be fasle");
+      setLoading(false);
+      setLoggedIn(res);
+    });
+  });
+  if (loading) {
+    return <div>loading...</div>;
+  } else {
+    if (loggedIn) {
+      return (
+        <div className="App">
+          <InsidePages />
+        </div>
+      );
+    } else {
+      return <LandingPage />;
+    }
+  }
 }
 
 export default App;
