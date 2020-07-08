@@ -1,0 +1,63 @@
+.Login {
+  text-align: center;
+  align-items: center;
+  margin: 20px auto;
+  font-family: "Fredoka One", cursive;
+}
+
+.Login label {
+  font-family: "Fredoka One", cursive;
+  font-size: 1rem;
+  font-weight: 100;
+  margin-top: 10px;
+  color: rgb(63, 63, 63);
+}
+
+.Login input:focus {
+  outline: none;
+  border: 2.2px solid rgb(135, 95, 154);
+  padding: 2px 5px;
+}
+.Login input {
+  display: block;
+  width: 25%;
+  margin: 0px auto;
+  border: 2px solid rgb(110, 110, 110);
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Login .not-auth-message {
+  color: rgb(233, 0, 0);
+  font-weight: 600;
+  font-family: "Fredoka One", cursive;
+  font-weight: 100;
+}
+
+.Login button {
+  padding: 7px 15px;
+  font-family: "Fredoka One", cursive;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 7px;
+  background-color: rgb(135, 95, 154);
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 7px;
+  width: 190px;
+}
+.Login button:focus {
+  outline: none;
+}
+.Login button:hover {
+  padding: 8px 16px;
+}
+
+.Login .fogot-password {
+  color: rgb(135, 95, 154);
+}
+
+.Login .fogot-password:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
