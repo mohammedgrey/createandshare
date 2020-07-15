@@ -1,11 +1,14 @@
 import React from "react";
 import "./Profile.css";
+import ProfileLayout from "./ProfileLayout";
 
 class Profile extends React.Component {
-  componentDidMount() {}
-
   render() {
-    return <div className="Profile">Profile</div>;
+    return (
+      <div className="Profile">
+        <ProfileLayout />
+      </div>
+    );
   }
 }
 

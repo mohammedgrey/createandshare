@@ -2,13 +2,12 @@ import React from "react";
 import Post from "../Components/Generic/Post";
 import { useState, useRef, useCallback } from "react";
 import usePagination from "../Components/Generic/UsePagination";
-import "./Explore.css";
-import CreatePost from "./Generic/CreatePost";
+// import "./Favorites.css";
 
-const Explore = () => {
+const Favorites = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { items, hasMore, loading, error } = usePagination(
-    "/posts",
+    "/posts/follow",
     pageNumber
   );
 
@@ -28,8 +27,7 @@ const Explore = () => {
   );
 
   return (
-    <div className="explore-main-class">
-      <CreatePost />
+    <div className="ProfileCreations">
       {items.map((post, index) => {
         if (items.length === index + 1) {
           return (
@@ -71,4 +69,4 @@ const Explore = () => {
   // }
 };
 
-export default Explore;
+export default Favorites;

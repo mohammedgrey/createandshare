@@ -4,6 +4,7 @@ import "./Login";
 import "./Signup";
 import Login from "./Login";
 import Signup from "./Signup";
+import { Redirect } from "react-router-dom";
 
 class LandingPage extends React.Component {
   componentDidMount() {}

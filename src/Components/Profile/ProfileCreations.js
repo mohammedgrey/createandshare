@@ -1,14 +1,14 @@
 import React from "react";
-import Post from "../Components/Generic/Post";
+import "./Profile.css";
+import Post from "../Generic/Post";
 import { useState, useRef, useCallback } from "react";
-import usePagination from "../Components/Generic/UsePagination";
-import "./Explore.css";
-import CreatePost from "./Generic/CreatePost";
+import usePagination from "../Generic/UsePagination";
+import CreatePost from "../Generic/CreatePost";
 
-const Explore = () => {
+const ProfileCreations = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { items, hasMore, loading, error } = usePagination(
-    "/posts",
+    "/posts/me",
     pageNumber
   );
 
@@ -28,7 +28,7 @@ const Explore = () => {
   );
 
   return (
-    <div className="explore-main-class">
+    <div className="ProfileCreations">
       <CreatePost />
       {items.map((post, index) => {
         if (items.length === index + 1) {
@@ -71,4 +71,4 @@ const Explore = () => {
   // }
 };
 
-export default Explore;
+export default ProfileCreations;

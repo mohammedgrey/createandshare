@@ -3,10 +3,12 @@ import "./Login.css";
 import { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import Alert from "./Generic/Alert";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [dangerAlert, setDangerAlert] = useState(false);
   const handlelogin = (e) => {
     e.preventDefault();
     console.log(email, password);
@@ -18,33 +20,19 @@ const Login = (props) => {
           //redirect
           console.log(res.data.token);
           // console.log(props.history);
-
+          props.history.replace("/");
           window.location.reload(true);
         },
         (error) => {
           console.log(error);
-          if (error.response.status === 401)
-            alert("Incorrect email or password");
+          if (error.response.status === 401) {
+            setDangerAlert(true);
+            setTimeout(() => {
+              setDangerAlert(false);
+            }, 2000);
+          }
         }
       );
-
-    // axios
-    //   .get("/posts/me", {
-    //     withCredentials: true,
-    //   })
-    //   .then(
-    //     (res) => {
-    //       //redirect
-    //       console.log(res.data);
-    //       // console.log(props.history);
-    //       // props.history.replace("./explore");
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //       // if (error.response.status === 401)
-    //       //   alert("Incorrect email or password");
-    //     }
-    //   );
   };
   return (
     <div className="Login">
@@ -74,6 +62,12 @@ const Login = (props) => {
 
         <p className="fogot-password">Forgot password?</p>
       </form>
+
+      <Alert
+        visible={dangerAlert}
+        type="danger-alert"
+        message="Incorrect Email or Password"
+      />
     </div>
   );
 };

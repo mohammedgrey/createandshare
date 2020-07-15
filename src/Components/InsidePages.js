@@ -1,7 +1,7 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import Profile from "./Profile";
-import Explore from "./Explore";
+import { Route, Switch, Redirect } from "react-router-dom";
+import Profile from "./Profile/Profile";
+import Home from "./Home";
 
 class LandingPage extends React.Component {
   componentDidMount() {}
@@ -10,9 +10,10 @@ class LandingPage extends React.Component {
     return (
       <div className="InsidePages">
         <Switch>
-          <Route exact path="/" component={Explore} />
+          <Route exact path="/" component={Home} />
           <Route path="/profile" component={Profile} />
-          <Route path="/explore" component={Explore} />
+          <Route path="/" component={Home} />
+          <Redirect to="/" />
         </Switch>
       </div>
     );

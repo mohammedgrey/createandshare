@@ -18,7 +18,7 @@ function App() {
     });
   });
   if (loading) {
-    return <div>loading...</div>;
+    return <i class="fas fa-spinner fa-spin center-spinner" />;
   } else {
     if (loggedIn) {
       return (

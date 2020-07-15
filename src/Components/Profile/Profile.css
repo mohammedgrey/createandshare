@@ -1,0 +1,345 @@
+/* Drawer CSS */
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.side-items-drawer a {
+  display: block;
+  color: rgb(20, 20, 20);
+  margin: 10px auto;
+  border-bottom: 2px solid rgb(128, 128, 128);
+  padding: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: "Fredericka the Great", cursive;
+  /* font-family: "Cabin Sketch", cursive; */
+}
+.side-items-drawer {
+  /* background-color: rgb(51, 51, 51); */
+  width: 100%;
+  height: 100%;
+}
+.side-items-drawer a:hover {
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 3px solid #4c1269;
+}
+
+.side-items-drawer a.active {
+  text-decoration: none;
+  border-bottom: 3px solid #4c1269;
+  font-size: 0.95rem;
+}
+
+/* PROFILE NAVBAR */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.profile-nav-bar {
+  display: flex !important;
+  justify-content: space-evenly !important;
+  font-family: "Fredericka the Great", cursive;
+}
+
+.profile-nav-bar h1 {
+  font-size: 1.3rem;
+  font-family: "Fredericka the Great", cursive;
+}
+.profile-nav-bar a {
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  font-size: 1.5rem;
+  color: white;
+  font-family: "Fredericka the Great", cursive;
+}
+.profile-nav-bar a:hover {
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: white;
+}
+/* PROFILE INFO CSS */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.my-profile-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  /* border: 2px solid #4c1269; */
+  background: rgb(101, 101, 101);
+  background: linear-gradient(
+    90deg,
+    rgba(101, 101, 101, 1) 0%,
+    rgba(174, 166, 176, 1) 50%,
+    rgba(205, 205, 205, 1) 100%
+  );
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-radius: 20px;
+
+  font-family: "Aclonica", sans-serif;
+  margin-bottom: 30px;
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 900px) {
+  .my-profile-info {
+    display: block;
+  }
+  .my-profile-info .my-text-info input {
+    min-width: 219px;
+  }
+}
+
+.my-profile-info .my-picture-info img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.my-profile-info .my-picture-info img:hover {
+  filter: brightness(0.5);
+}
+.my-profile-info .my-picture-info {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.my-profile-info .my-picture-info:hover button {
+  display: block;
+}
+.my-profile-info .my-picture-info button:focus {
+  border: none;
+  outline: none;
+}
+
+.my-profile-info .my-picture-info button:hover {
+  padding: 3px 5px;
+}
+.my-profile-info .my-picture-info button {
+  position: absolute;
+  bottom: 20px;
+  left: 68px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  background: none;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  display: none;
+  padding: 2px 4px;
+  font-size: 0.7rem;
+}
+
+.my-profile-info .my-text-info h6 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: left;
+}
+.my-profile-info .my-text-info input {
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  display: block;
+  min-width: 250px;
+}
+#disabled-button {
+  background-color: grey;
+}
+
+.my-profile-info .my-text-info button {
+  max-width: 290px;
+  min-width: 160px;
+  height: 30px;
+  background: #4c1269;
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  float: right;
+  line-height: 1;
+  padding: 10px 32px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 80%;
+  margin-top: 20px;
+  /* margin-right: 20px; */
+}
+
+.my-profile-info .my-text-info button:hover {
+  background: #7f5296;
+}
+
+.my-profile-info .my-text-info button:focus {
+  outline: none;
+}
+.my-profile-info .my-text-info input:focus {
+  outline: none;
+  border: none;
+}
+
+.my-profile-info .my-text-info p {
+  font-size: 0.9rem;
+}
+
+.my-profile-info .my-text-info button {
+}
+
+.side-items-in-big-screen {
+  margin-top: 64px;
+}
+.side-items-in-small-screen {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 900px) {
+  .my-profile-info {
+    display: block;
+  }
+  .my-profile-info .my-text-info input {
+    min-width: 219px;
+  }
+  .my-profile-info .my-picture-info button {
+    display: block;
+  }
+}
+
+.change-password-block {
+  padding: 40px;
+  /* border: 2px solid #4c1269; */
+  background: rgb(101, 101, 101);
+  background: linear-gradient(
+    90deg,
+    rgba(101, 101, 101, 1) 0%,
+    rgba(174, 166, 176, 1) 50%,
+    rgba(205, 205, 205, 1) 100%
+  );
+
+  border-radius: 20px;
+  align-items: left;
+
+  font-family: "Aclonica", sans-serif;
+  margin-bottom: 30px;
+  padding-bottom: 60px;
+}
+
+.change-password-block h6 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: left;
+  color: rgb(250, 250, 250);
+}
+.change-password-block h6 span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: black;
+  /* font-family: Helvetica, sans-serif; */
+  /* text-transform: uppercase; */
+}
+.change-password-block input {
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  font-family: "Aclonica", sans-serif;
+  border-radius: 5px;
+  display: block;
+  min-width: 250px;
+}
+.change-password-block button {
+  max-width: 290px;
+  min-width: 160px;
+  height: 30px;
+  background: #4c1269;
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  float: right;
+  line-height: 1;
+  padding: 10px 32px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 80%;
+  font-family: "Aclonica", sans-serif;
+}
+
+.change-password-block button:focus {
+  outline: none;
+}
+.change-password-block button:hover {
+  background: #7f5296;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 900px) {
+  .change-password-block {
+    padding-bottom: 20px;
+  }
+}
+
+/* EDIT PICTURE MODAL CSS */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.modal-footer-edit-picture-class button {
+  max-width: 290px;
+  min-width: 160px;
+  height: 30px;
+  background: #4c1269;
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  float: right;
+  line-height: 1;
+  padding: 10px 32px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 80%;
+  font-family: "Aclonica", sans-serif;
+}
+
+.modal-footer-edit-picture-class button:hover {
+  background: #7f5296;
+}
+
+.modal-footer-edit-picture-class button:focus {
+  outline: none;
+}
+
+.modal-edit-picture-class .old-image-class {
+  width: 120px;
+  height: 120px;
+  border: 2px solid rgb(29, 30, 31);
+  border-radius: 50%;
+  display: block;
+  margin: 20px auto;
+}
+
+.modal-edit-picture-class .profile-container-div {
+  text-align: center;
+  align-items: center;
+}
+.modal-edit-picture-class .profile-container-div h4 {
+  color: rgb(29, 30, 31);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+.modal-edit-picture-class h4 {
+  font-family: "Aclonica", sans-serif;
+}
+.pick-up-a-new-photo {
+  color: rgb(29, 30, 31);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+.modal-edit-picture-class {
+  z-index: 2000;
+}

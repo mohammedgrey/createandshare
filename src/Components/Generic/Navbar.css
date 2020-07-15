@@ -1,0 +1,48 @@
+/* override bootstrap navbar colors */
+.navbar,
+.navbar-default {
+  background-image: linear-gradient(
+    90deg,
+    rgba(22, 0, 33, 1) 0%,
+    rgba(135, 95, 154, 1) 49%,
+    rgba(22, 0, 33, 1) 100%
+  ) !important; /* override background image gradient w/ flat color */
+}
+
+.nav-bar a {
+  color: rgb(199, 197, 199);
+}
+
+.nav-bar a:hover {
+  color: rgb(199, 197, 199);
+  color: white;
+  text-decoration: none;
+}
+
+.nav-bar img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+#log-out-button {
+  background: none;
+  text-transform: uppercase;
+  /* font-size: 0.8rem; */
+  border: none;
+  color: rgb(199, 197, 199);
+  font-weight: 600;
+  margin: auto;
+  padding-top: 4px;
+}
+#log-out-button:focus {
+  background: none;
+  outline: none;
+  border: none;
+}
+#log-out-button:hover {
+  background: none;
+  outline: none;
+  border: none;
+  color: white;
+}

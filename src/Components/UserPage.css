@@ -1,0 +1,43 @@
+.user-page .other-user-profile-data {
+  font-family: "Amatic SC", cursive;
+}
+
+.user-page h1 {
+  font-family: "Amatic SC", cursive;
+  font-weight: 800;
+}
+
+.user-page .other-user-profile-data img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+.user-page p {
+  font-family: "Cabin Sketch", cursive;
+  color: black;
+  font-size: 1.3rem;
+  margin-top: 20px;
+}
+
+#not-favored {
+  color: rgb(147, 142, 148);
+  font-size: 1.9rem;
+}
+
+#not-favored:hover {
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgb(214, 159, 41);
+}
+
+#favored {
+  color: rgb(214, 159, 41);
+  font-size: 1.9rem;
+}
+
+#favored:hover {
+  font-size: 2rem;
+  cursor: pointer;
+
+  color: rgb(147, 142, 148);
+}
