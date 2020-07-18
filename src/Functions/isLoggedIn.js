@@ -1,7 +1,7 @@
 import axios from "axios";
 const isLoggedIn = async () => {
   try {
-    await axios.get("http://127.0.0.1:8000/api/v1/users/loggedin", {
+    await axios.get("/users/loggedin", {
       withCredentials: true,
     });
     return true;
