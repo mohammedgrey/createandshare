@@ -18,7 +18,11 @@ function App() {
     });
   });
   if (loading) {
-    return <i class="fas fa-spinner fa-spin center-spinner" />;
+    return (
+      <div className="centered-div-spinner">
+        <i class="fas fa-spinner fa-spin" />
+      </div>
+    );
   } else {
     if (loggedIn) {
       return (

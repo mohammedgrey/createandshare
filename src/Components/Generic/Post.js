@@ -60,7 +60,9 @@ const Post = (props) => {
               alt="Apple"
               src={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/users/${props.userImage}`}
               onClick={() => {
-                props.history.push(`/users/${props.userId}`);
+                if (localStorage.getItem("userID") === props.userId)
+                  props.history.push("/profile");
+                else props.history.push(`/users/${props.userId}`);
               }}
             />
           }

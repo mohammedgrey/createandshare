@@ -64,8 +64,7 @@ const NavBar = (props) => {
                   const res = await axios.get("/users/logout", {
                     withCredentials: true,
                   });
-                  console.log(res);
-                  console.log(props.history);
+                  localStorage.removeItem("userID");
                   props.history.push("/");
                   window.location.reload(true);
                 }}

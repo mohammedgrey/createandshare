@@ -45,9 +45,7 @@ const Signup = (props) => {
       )
       .then(
         (res) => {
-          //redirect
-          console.log(res.data.token);
-          // console.log(props.history);
+          localStorage.setItem("userID", res.data.data.user._id);
           props.history.replace("/");
           window.location.reload(true);
         },
