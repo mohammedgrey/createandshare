@@ -2,13 +2,12 @@
   text-align: center;
   align-items: center;
   margin: 20px auto;
-  font-family: "Fredoka One", cursive;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .Login label {
-  font-family: "Fredoka One", cursive;
   font-size: 1rem;
-  font-weight: 100;
+  font-weight: 700;
   margin-top: 10px;
   color: rgb(63, 63, 63);
 }
@@ -36,7 +35,7 @@
 
 .Login button {
   padding: 7px 15px;
-  font-family: "Fredoka One", cursive;
+  font-family: "Aclonica", sans-serif;
   font-size: 0.9rem;
   border: none;
   border-radius: 7px;
@@ -60,4 +59,16 @@
 .Login .fogot-password:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  .Login input {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Login input {
+    width: 75%;
+  }
 }

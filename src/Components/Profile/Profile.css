@@ -72,7 +72,7 @@
   border-top-right-radius: 15px;
   border-radius: 20px;
 
-  font-family: "Aclonica", sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   margin-bottom: 30px;
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -83,6 +83,14 @@
   .my-profile-info .my-text-info input {
     min-width: 219px;
   }
+}
+
+.ProfileInfo h4 {
+  font-family: "Fredericka the Great", cursive;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: rgb(71, 42, 86);
+  font-weight: 600;
 }
 
 .my-profile-info .my-picture-info img {
@@ -164,6 +172,8 @@
   font-weight: 700;
   font-size: 80%;
   margin-top: 20px;
+  font-family: "Aclonica", sans-serif;
+  text-transform: uppercase;
   /* margin-right: 20px; */
 }
 
@@ -219,7 +229,7 @@
   border-radius: 20px;
   align-items: left;
 
-  font-family: "Aclonica", sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   margin-bottom: 30px;
   padding-bottom: 60px;
 }
@@ -265,6 +275,7 @@
   font-weight: 700;
   font-size: 80%;
   font-family: "Aclonica", sans-serif;
+  text-transform: uppercase;
 }
 
 .change-password-block button:focus {
@@ -277,6 +288,90 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 900px) {
   .change-password-block {
+    padding-bottom: 20px;
+  }
+}
+
+.update-bio-block {
+  padding: 40px;
+  /* border: 2px solid #4c1269; */
+  background: rgb(101, 101, 101);
+  background: linear-gradient(
+    90deg,
+    rgba(101, 101, 101, 1) 0%,
+    rgba(174, 166, 176, 1) 50%,
+    rgba(205, 205, 205, 1) 100%
+  );
+
+  border-radius: 20px;
+  align-items: left;
+
+  font-family: "Aclonica", sans-serif;
+  margin-bottom: 30px;
+  padding-bottom: 60px;
+}
+
+.update-bio-block textarea {
+  width: 100%;
+  height: 100px;
+  display: inline-block;
+
+  resize: none;
+  border-radius: 5px;
+  border: 2px solid rgb(110, 109, 110);
+
+  font-family: "Cabin Sketch", cursive;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 550;
+  padding-left: 33px;
+  padding-top: 5px;
+}
+.update-bio-block .text-area {
+  margin: 10px auto;
+  width: 80%;
+  position: relative;
+  margin-bottom: 20px;
+}
+.update-bio-block .text-area .fa-pen {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.2rem;
+  color: rgb(88, 88, 88);
+}
+
+.update-bio-block button {
+  max-width: 290px;
+  min-width: 160px;
+  height: 30px;
+  background: #4c1269;
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  float: right;
+  line-height: 1;
+  padding: 10px 32px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 80%;
+  font-family: "Aclonica", sans-serif;
+  text-transform: uppercase;
+}
+
+.update-bio-block button:focus {
+  outline: none;
+}
+.update-bio-block button:hover {
+  background: #7f5296;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 900px) {
+  .update-bio-block {
     padding-bottom: 20px;
   }
 }
@@ -302,6 +397,7 @@
   font-weight: 700;
   font-size: 80%;
   font-family: "Aclonica", sans-serif;
+  text-transform: uppercase;
 }
 
 .modal-footer-edit-picture-class button:hover {

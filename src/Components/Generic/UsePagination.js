@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const UsePagination = (url, pageNumber) => {
+const UsePagination = (url, pageNumber, type) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [items, setItems] = useState([]);
@@ -23,7 +23,15 @@ const UsePagination = (url, pageNumber) => {
     })
       .then((res) => {
         setItems((prevItems) => {
-          return [...prevItems, ...res.data.data.posts];
+          if (type === "followers") {
+            return [...prevItems, ...res.data.data.followers];
+          } else if (type === "following") {
+            return [...prevItems, ...res.data.data.following];
+          } else if (type === "posts") {
+            return [...prevItems, ...res.data.data.posts];
+          } else {
+            return [...prevItems, ...res.data.data.posts];
+          }
         });
         setHasMore(res.data.length > 0);
         setLoading(false);

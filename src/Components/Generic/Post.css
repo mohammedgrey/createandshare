@@ -45,3 +45,16 @@
   padding: 2px;
   border-radius: 50%;
 }
+.delete-post-button {
+  background: none;
+  border: none;
+  text-align: center;
+  margin-top: 12px;
+}
+.delete-post-button:focus {
+  outline: none;
+}
+.delete-post-button .fa-trash-alt {
+  font-size: 1.2rem;
+  color: rgb(110, 10, 10);
+}

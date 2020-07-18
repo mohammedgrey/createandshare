@@ -25,6 +25,8 @@ class ProfileInfo extends React.Component {
     changeDisabled: true,
     dangerAlertPass: false,
     safeAlertPass: false,
+    updateDisabled: true,
+    bio: "",
   };
   componentDidMount() {
     this.setState({ loading: true });
@@ -43,6 +45,7 @@ class ProfileInfo extends React.Component {
             name: user.name,
             email: user.email,
             birthdate: user.birthdate,
+            bio: user.bio,
           });
         },
         (error) => {
@@ -141,6 +144,34 @@ class ProfileInfo extends React.Component {
     } else {
       this.setState({ changeDisabled: true });
     }
+  };
+
+  handleUpdateBio = (e) => {
+    this.setState({ loading: true });
+    axios({
+      method: "PATCH",
+      url: "/users/me/updatebio",
+      data: {
+        bio: this.state.bio,
+      },
+    }).then(
+      (res) => {
+        this.setState({ loading: false });
+        this.setState({ updateDisabled: true });
+        this.setState({ safeAlert: true }, () => {
+          setTimeout(() => {
+            this.setState({ safeAlert: false });
+          }, 1500);
+        });
+        // window.location.reload(true);
+      },
+      (error) => {
+        this.setState({ loading: false });
+        this.setState({ updateDisabled: true });
+
+        alert("unexpected Error");
+      }
+    );
   };
 
   render() {
@@ -263,7 +294,31 @@ class ProfileInfo extends React.Component {
             </div>
           </div>
 
+          <div className="update-bio-block">
+            <h4>Biography</h4>
+            <div className="text-area">
+              <textarea
+                type="text area"
+                value={this.state.bio}
+                onChange={(e) => {
+                  this.setState({ bio: e.target.value }, () => {
+                    this.setState({ updateDisabled: false });
+                  });
+                }}
+              ></textarea>
+              <i class="fas fa-pen"></i>
+            </div>
+            <button
+              onClick={this.handleUpdateBio}
+              id={this.state.updateDisabled ? "disabled-button" : ""}
+              disabled={this.state.updateDisabled}
+            >
+              Update
+            </button>
+          </div>
+
           <div className="change-password-block">
+            <h4>Change Password</h4>
             <h6>Old password</h6>
             <input
               onChange={(e) => {

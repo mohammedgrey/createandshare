@@ -43,6 +43,7 @@ const ProfileCreations = () => {
                 userId={post.user._id}
                 name={post.user.name}
                 date={post.createdAt}
+                me
               />
             </div>
           );
@@ -58,6 +59,7 @@ const ProfileCreations = () => {
                 userId={post.user._id}
                 name={post.user.name}
                 date={post.createdAt}
+                me
               />
             </div>
           );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -14,6 +14,9 @@ import { red } from "@material-ui/core/colors";
 import "./Post.css";
 import { withRouter } from "react-router-dom";
 import * as moment from "moment";
+import { Button } from "@material-ui/core";
+import axios from "axios";
+import Alert from "./Alert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Post = (props) => {
   const classes = useStyles();
+  const [dangerAlert, setDangerAlert] = useState(false);
 
   return (
     <div
@@ -61,9 +65,27 @@ const Post = (props) => {
             />
           }
           action={
-            <IconButton aria-label="settings">
-              {/* <MoreVertIcon /> */}
-            </IconButton>
+            props.me && (
+              <button
+                className="delete-post-button"
+                onClick={() => {
+                  axios.delete(`/posts/${props.id}`).then(
+                    (res) => {
+                      setDangerAlert(true);
+                      setTimeout(() => {
+                        setDangerAlert(false);
+                        window.location.reload(true);
+                      }, 1500);
+                    },
+                    (error) => {
+                      alert("unexpected error");
+                    }
+                  );
+                }}
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            )
           }
           title={props.name}
           subheader={moment(props.date).format("MMMM Do YYYY, h:mm:ss a")}
@@ -97,6 +119,8 @@ const Post = (props) => {
         </CardActions>
       </Card>
       {/* </Grid> */}
+
+      <Alert visible={dangerAlert} type="danger-alert" message="Deleted" />
     </div>
   );
 };

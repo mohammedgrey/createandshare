@@ -30,7 +30,7 @@ const NavBar = (props) => {
 
   return (
     <div className="nav-bar" id="nav-bar">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" fixed="top">
         <Navbar.Brand>
           <NavLink to="/">Home</NavLink>
         </Navbar.Brand>

@@ -1,0 +1,83 @@
+.Signup {
+  text-align: center;
+  align-items: center;
+  margin: 20px auto;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.Signup h6 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 10px;
+  /* color: rgb(63, 63, 63); */
+}
+
+.Signup input:focus {
+  outline: none;
+  border: 2.2px solid rgb(135, 95, 154);
+  padding: 2px 5px;
+}
+.Signup input {
+  display: block;
+  width: 25%;
+  margin: 0px auto;
+  border: 2px solid rgb(110, 110, 110);
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
+}
+
+.Signup .not-auth-message {
+  color: rgb(233, 0, 0);
+  font-weight: 600;
+  font-family: "Fredoka One", cursive;
+  font-weight: 100;
+}
+
+.Signup button {
+  padding: 7px 15px;
+  font-family: "Aclonica", sans-serif;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 7px;
+  background-color: rgb(135, 95, 154);
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 7px;
+  width: 190px;
+}
+.Signup button:focus {
+  outline: none;
+}
+.Signup button:hover {
+  padding: 8px 16px;
+}
+
+.Signup #disabled-button {
+  padding: 7px 15px;
+}
+
+.Signup span {
+  font-family: "Aclonica", sans-serif;
+  font-size: 0.7rem;
+}
+
+.Signup h1 {
+  font-family: "Aclonica", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 30px auto;
+  color: rgb(89, 43, 110);
+}
+
+@media only screen and (max-width: 900px) {
+  .Signup input {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Signup input {
+    width: 75%;
+  }
+}

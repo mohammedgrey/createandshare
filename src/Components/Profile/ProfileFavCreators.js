@@ -1,48 +1,65 @@
 import React from "react";
 import "./Profile.css";
-import axios from "axios";
-import formatDate from "../../Functions/formatDate";
+import User from "../Generic/User";
+import { useState, useRef, useCallback } from "react";
+import usePagination from "../Generic/UsePagination";
 
-class ProfileFavCreators extends React.Component {
-  state = {
-    image: "",
-    name: "",
-    email: "",
-    birthdate: "",
-    loading: false,
-  };
-  componentDidMount() {
-    this.setState({ loading: true });
-    axios
-      .get("/users/me", {
-        withCredentials: true,
-      })
-      .then(
-        (res) => {
-          this.setState({ loading: false });
-          const user = res.data.data.user;
+const ProfileFavCreators = () => {
+  const [pageNumber, setPageNumber] = useState(1);
+  const { items, hasMore, loading, error } = usePagination(
+    "/users/me/following",
+    pageNumber,
+    "following"
+  );
 
-          user.birthdate = formatDate(user.birthdate);
-          this.setState({
-            image: user.image,
-            name: user.name,
-            email: user.email,
-            birthdate: user.birthdate,
-          });
-        },
-        (error) => {
-          console.log(error);
+  const observer = useRef();
+  const lastItemElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setPageNumber((prevPageNumber) => prevPageNumber + 1);
         }
-      );
-  }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore]
+  );
 
-  render() {
-    if (this.state.loading) {
-      return <i class="fas fa-spinner fa-spin" />;
-    } else {
-      return <div className="ProfileFavCreators"></div>;
-    }
-  }
-}
+  return (
+    <div className="ProfileFavCreators">
+      {items.map((user, index) => {
+        if (items.length === index + 1) {
+          return (
+            <div ref={lastItemElementRef}>
+              <User
+                name={user.followee.name}
+                image={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/users/${user.followee.image}`}
+                id={user.followee._id}
+                key={user.followee._id}
+              />
+            </div>
+          );
+        } else {
+          return (
+            <div>
+              <User
+                name={user.followee.name}
+                image={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/users/${user.followee.image}`}
+                id={user.followee._id}
+                key={user.followee._id}
+              />
+            </div>
+          );
+        }
+      })}
+
+      <div>{loading && <i class="fas fa-spinner fa-spin" />}</div>
+      <div>{error && "Error"}</div>
+    </div>
+  );
+  // }
+};
 
 export default ProfileFavCreators;

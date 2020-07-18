@@ -11,7 +11,6 @@ const Login = (props) => {
   const [dangerAlert, setDangerAlert] = useState(false);
   const handlelogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
 
     axios
       .post("/users/login", { email, password }, { withCredentials: true })
@@ -57,10 +56,10 @@ const Login = (props) => {
         {/* <p className="not-auth-message"> Wrong email or password</p> */}
 
         <button type="submit" onClick={handlelogin}>
-          LOG IN
+          log in
         </button>
 
-        <p className="fogot-password">Forgot password?</p>
+        {/* <p className="fogot-password">Forgot password?</p> */}
       </form>
 
       <Alert
