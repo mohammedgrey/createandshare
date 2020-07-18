@@ -16,8 +16,11 @@ const CreatePost = () => {
   const onSaveFile = () => {
     let fd = new FormData();
     // fd.append('image', selectedPhoto,selectedPhoto.name);
-    fd.append("photo", selectedPhoto);
-    fd.append("name", selectedPhoto.name);
+    if (selectedPhoto) {
+      fd.append("photo", selectedPhoto);
+      fd.append("name", selectedPhoto.name);
+    }
+
     fd.append("content", content);
     fd.append("createdAt", new Date().toLocaleString());
     axios({
