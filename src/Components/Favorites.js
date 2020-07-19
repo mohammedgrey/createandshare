@@ -27,7 +27,7 @@ const Favorites = () => {
   );
 
   return (
-    <div className="ProfileCreations">
+    <div className="ProfileCreations" style={{ paddingTop: "10px" }}>
       {items.map((post, index) => {
         if (items.length === index + 1) {
           return (

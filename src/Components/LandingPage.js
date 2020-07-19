@@ -4,14 +4,17 @@ import "./Login";
 import "./Signup";
 import Login from "./Login";
 import Signup from "./Signup";
-import { Redirect } from "react-router-dom";
+const createbackground = require("../Assets/Imagaes/createbackground.jpg");
 
 class LandingPage extends React.Component {
   componentDidMount() {}
 
   render() {
     return (
-      <div className="LandingPage">
+      <div
+        className="LandingPage"
+        style={{ backgroundImage: "url(" + createbackground + ")" }}
+      >
         <div className="log-in">
           <Login />
         </div>

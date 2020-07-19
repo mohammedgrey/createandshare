@@ -34,6 +34,7 @@ const Login = (props) => {
   };
   return (
     <div className="Login">
+      {/* <h1>Log in</h1> */}
       <form noValidate>
         <label for="email">
           <i class="far fa-envelope"></i> Email

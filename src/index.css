@@ -26,7 +26,7 @@ code {
 }
 
 .home {
-  margin-top: 65px;
+  margin-top: 62px;
 }
 
 .centered-div-spinner {
@@ -38,4 +38,13 @@ code {
   margin-top: -2em; /*set to a negative number 1/2 of your height*/
   margin-left: -12em; /*set to a negative number 1/2 of your width*/
   text-align: center;
+}
+
+body {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-3eWiVdzVHdjAwFk37yFWdKoN-BvBD8qTTg&usqp=CAU");
+  background-image: url("https://splendidtutoring.com/wp-content/uploads/bfi_thumb/stars-1-386nukfk6odt3nue9bx3pm@2x.png");
+  background-position: top;
+  /* background-repeat: no-repeat; */
+  background-size: auto;
+  /* box-shadow: inset 0 0 0 150vw rgba(0, 0, 0, 0.4); */
 }
