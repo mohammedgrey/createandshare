@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./CreatePost.css";
 import axios from "axios";
+import moment from "moment";
 // import createbackground from "../../Assets/Imagaes/createbackground.jpg";
 const createbackground = require("../../Assets/Imagaes/createbackground.jpg");
 
@@ -22,7 +23,9 @@ const CreatePost = () => {
     }
 
     fd.append("content", content);
-    fd.append("createdAt", new Date().toLocaleString());
+
+    fd.append("createdAt", moment().format());
+    // fd.append("createdAt", new Date().toLocaleString());
     axios({
       method: "POST",
       url: "/posts/me",
