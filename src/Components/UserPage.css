@@ -27,11 +27,11 @@
 #not-favored:hover {
   font-size: 2rem;
   cursor: pointer;
-  color: rgb(214, 159, 41);
+  color: rgb(253, 194, 10);
 }
 
 #favored {
-  color: rgb(214, 159, 41);
+  color: rgb(253, 194, 10);
   font-size: 1.9rem;
 }
 

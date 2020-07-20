@@ -170,7 +170,7 @@ const Post = (props) => {
           ) : (
             <div className="like-post-class">
               <i
-                class="fas fa-heart"
+                class="fas fa-star"
                 id={liked ? "liked" : "not-liked"}
                 onClick={handleLike}
               ></i>

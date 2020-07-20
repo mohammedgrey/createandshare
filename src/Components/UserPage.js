@@ -138,6 +138,7 @@ const UserPage = () => {
                 userId={post.user._id}
                 name={post.user.name}
                 date={post.createdAt}
+                likes={post.likes}
               />
             </div>
           );
@@ -153,6 +154,7 @@ const UserPage = () => {
                 userId={post.user._id}
                 name={post.user.name}
                 date={post.createdAt}
+                likes={post.likes}
               />
             </div>
           );

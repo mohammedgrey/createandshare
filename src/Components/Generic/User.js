@@ -5,7 +5,14 @@ import "./User.css";
 const User = (props) => {
   return (
     <div className="user-component-class" id={props.size + "-user"}>
-      <Link className="user-to-profile-img" to={`/users/${props.id}`}>
+      <Link
+        className="user-to-profile-img"
+        to={
+          localStorage.getItem("userID") === props.id
+            ? "/profile"
+            : `/users/${props.id}`
+        }
+      >
         <img src={props.image} alt="user" />
       </Link>
       <div className="user-info">
