@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -17,6 +17,7 @@ import * as moment from "moment";
 import { Button } from "@material-ui/core";
 import axios from "axios";
 import Alert from "./Alert";
+import LikesModal from "./LikesModal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,12 +38,71 @@ const useStyles = makeStyles((theme) => ({
 const Post = (props) => {
   const classes = useStyles();
   const [dangerAlert, setDangerAlert] = useState(false);
+  const [liked, setLiked] = useState(undefined);
+  const [loadingLike, setLoadingLike] = useState(true);
+  const [likes, setLikes] = useState(props.likes);
+  const [rerenderLikesModal, setRerenderLikesModal] = useState(Math.random());
+  const [modalLikesShow, setModalLikesShow] = useState(false);
+
+  useEffect(() => {
+    // setLoadingProfile(true);
+    axios.get(`/posts/${props.id}/like`).then(
+      (res) => {
+        console.log(res.data.message);
+
+        if (res.data.message === "liked") setLiked(true);
+        else setLiked(false);
+
+        setLoadingLike(false);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }, []);
+
+  const handleLike = () => {
+    setLoadingLike(true);
+    if (liked) {
+      axios.delete(`/posts/${props.id}/like`).then(
+        (res) => {
+          setLoadingLike(false);
+          setLiked(false);
+          setLikes(res.data.likes);
+          setRerenderLikesModal(Math.random());
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      axios.post(`/posts/${props.id}/like`).then(
+        (res) => {
+          setLoadingLike(false);
+          setLiked(true);
+          setLikes(res.data.likes);
+          setRerenderLikesModal(Math.random());
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  };
 
   return (
     <div
       className="post-main-class"
       style={{ display: "flex", justifyContent: "center" }}
     >
+      <LikesModal
+        key={rerenderLikesModal}
+        postID={props.id}
+        show={modalLikesShow}
+        onHide={() => {
+          setModalLikesShow(false);
+        }}
+      />
       {/* <Grid container justify="center"> */}
       <Card
         className={classes.root}
@@ -105,14 +165,28 @@ const Post = (props) => {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
+          {loadingLike ? (
+            <i class="fas fa-spinner fa-spin" />
+          ) : (
+            <div className="like-post-class">
+              <i
+                class="fas fa-heart"
+                id={liked ? "liked" : "not-liked"}
+                onClick={handleLike}
+              ></i>
+              <p
+                className="num-likes-class"
+                onClick={() => {
+                  setModalLikesShow(true);
+                }}
+              >
+                {" "}
+                {likes}
+              </p>
+            </div>
+          )}
+
           {/* <i
-            class="fas fa-heart"
-            onClick={() => {
-              console.log("heart");
-            }}
-          ></i>
-       
-          <i
             class="far fa-comment"
             onClick={() => {
               console.log("comment");

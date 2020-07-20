@@ -44,6 +44,7 @@ const ProfileCreations = () => {
                 name={post.user.name}
                 date={post.createdAt}
                 me
+                likes={post.likes}
               />
             </div>
           );
@@ -60,6 +61,7 @@ const ProfileCreations = () => {
                 name={post.user.name}
                 date={post.createdAt}
                 me
+                likes={post.likes}
               />
             </div>
           );

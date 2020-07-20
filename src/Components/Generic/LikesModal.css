@@ -1,0 +1,25 @@
+.likes-modal {
+  text-align: center;
+  height: 300px;
+  overflow-y: scroll;
+}
+.likes-modal button {
+  max-width: 290px;
+  min-width: 160px;
+  height: 30px;
+  background: #4c1269;
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  float: right;
+  line-height: 1;
+  padding: 10px 32px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 80%;
+  font-family: "Aclonica", sans-serif;
+  text-transform: uppercase;
+}

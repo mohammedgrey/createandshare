@@ -43,6 +43,7 @@ const Explore = () => {
                 userId={post.user._id}
                 name={post.user.name}
                 date={post.createdAt}
+                likes={post.likes}
               />
             </div>
           );
@@ -58,6 +59,7 @@ const Explore = () => {
                 userId={post.user._id}
                 name={post.user.name}
                 date={post.createdAt}
+                likes={post.likes}
               />
             </div>
           );

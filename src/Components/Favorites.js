@@ -41,6 +41,7 @@ const Favorites = () => {
                 userId={post.user._id}
                 name={post.user.name}
                 date={post.createdAt}
+                likes={post.likes}
               />
             </div>
           );
@@ -56,6 +57,7 @@ const Favorites = () => {
                 userId={post.user._id}
                 name={post.user.name}
                 date={post.createdAt}
+                likes={post.likes}
               />
             </div>
           );

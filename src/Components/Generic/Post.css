@@ -24,7 +24,7 @@
 
 .post-main-class .fas:hover {
   cursor: pointer;
-  filter: brightness(1.2);
+  /* filter: brightness(1.2); */
 }
 .post-main-class p {
   font-family: "Cabin Sketch", cursive;
@@ -57,4 +57,37 @@
 .delete-post-button .fa-trash-alt {
   font-size: 1.2rem;
   color: rgb(110, 10, 10);
+}
+.post-main-class #liked {
+  color: rgb(253, 194, 10);
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
+    1px 1px 0 white;
+}
+
+.post-main-class #not-liked {
+  color: rgb(122, 122, 122);
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
+    1px 1px 0 white;
+}
+
+.post-main-class #liked:hover {
+  color: rgb(122, 122, 122);
+}
+
+.post-main-class #not-liked:hover {
+  color: rgb(253, 194, 10);
+  outline: white;
+}
+
+.num-likes-class {
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  color: white !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  display: inline-block !important;
+  margin-left: 5px !important;
+}
+.num-likes-class:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
