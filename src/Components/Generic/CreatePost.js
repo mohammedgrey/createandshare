@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "./CreatePost.css";
 import axios from "axios";
 import moment from "moment";
+import LinearProgress from "@material-ui/core/LinearProgress";
 // import createbackground from "../../Assets/Imagaes/createbackground.jpg";
 const createbackground = require("../../Assets/Imagaes/createbackground.jpg");
 
@@ -10,11 +11,13 @@ const CreatePost = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [content, setContent] = useState("");
   const inputFile = useRef(null);
+  const [loading, setLoading] = useState(false);
   const onFileUpload = () => {
     inputFile.current.click();
   };
 
   const onSaveFile = () => {
+    setLoading(true);
     let fd = new FormData();
     // fd.append('image', selectedPhoto,selectedPhoto.name);
     if (selectedPhoto) {
@@ -32,10 +35,13 @@ const CreatePost = () => {
       data: fd,
     }).then(
       (res) => {
+        setLoading(false);
         window.location.reload(true);
       },
       (error) => {
         console.log(error);
+        setLoading(false);
+        alert("Unexpected error");
       }
     );
   };
@@ -66,47 +72,46 @@ const CreatePost = () => {
       }
     }
   };
-  return (
-    <div
-      className="create-post"
-      // background:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(myimage.png)
-      style={{ backgroundImage: "url(" + createbackground + ")" }}
-      // style={{
-      //   background:
-      //     "linear-gradient(180deg,rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(" +
-      //     createbackground +
-      //     ")",
-      // }}
-    >
-      <h1>New Creation</h1>
-      <div className="text-area">
-        <textarea
-          type="text area"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <i class="fas fa-pen"></i>
-      </div>
-      {imagePreview && <img src={imagePreview} alt="not found"></img>}
-      <div className="file-upload">
-        <input
-          onChange={onChangeFile}
-          style={{ display: "none" }}
-          type="file"
-          ref={inputFile}
-        ></input>
-        <button onClick={onFileUpload}>pick a file</button>
-      </div>
-
-      <button
-        id="save-new-creation-button"
-        style={{ display: !selectedPhoto && content === "" ? "none" : "block" }}
-        onClick={onSaveFile}
+  if (loading) {
+    return <LinearProgress />;
+  } else {
+    return (
+      <div
+        className="create-post"
+        style={{ backgroundImage: "url(" + createbackground + ")" }}
       >
-        Alrigt
-      </button>
-    </div>
-  );
+        <h1>New Creation</h1>
+        <div className="text-area">
+          <textarea
+            type="text area"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+          <i class="fas fa-pen"></i>
+        </div>
+        {imagePreview && <img src={imagePreview} alt="not found"></img>}
+        <div className="file-upload">
+          <input
+            onChange={onChangeFile}
+            style={{ display: "none" }}
+            type="file"
+            ref={inputFile}
+          ></input>
+          <button onClick={onFileUpload}>pick a file</button>
+        </div>
+
+        <button
+          id="save-new-creation-button"
+          style={{
+            display: !selectedPhoto && content === "" ? "none" : "block",
+          }}
+          onClick={onSaveFile}
+        >
+          Alrigt
+        </button>
+      </div>
+    );
+  }
 };
 
 export default CreatePost;

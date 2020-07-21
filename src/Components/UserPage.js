@@ -121,7 +121,7 @@ const UserPage = () => {
             src={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/users/${image}`}
             alt="user"
           ></img>
-          <p>{bio}</p>
+          <p className="other-user-bio-text">{bio}</p>
         </div>
       )}
       <h1>Creations</h1>
@@ -139,6 +139,7 @@ const UserPage = () => {
                 name={post.user.name}
                 date={post.createdAt}
                 likes={post.likes}
+                comments={post.comments}
               />
             </div>
           );
@@ -155,6 +156,7 @@ const UserPage = () => {
                 name={post.user.name}
                 date={post.createdAt}
                 likes={post.likes}
+                comments={post.comments}
               />
             </div>
           );

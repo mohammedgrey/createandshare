@@ -4,6 +4,7 @@ import validateEmail from "../Functions/validateEmail";
 import Alert from "./Generic/Alert";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import { CircularProgress } from "@material-ui/core";
 
 const Signup = (props) => {
   const [name, setName] = useState("");
@@ -13,6 +14,7 @@ const Signup = (props) => {
   const [birthdate, setBirthdate] = useState("");
   const [signupDisabled, setSignupDisabled] = useState(true);
   const [dangerAlert, setDangerAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validateInput = () => {
     //CHECK
@@ -36,6 +38,7 @@ const Signup = (props) => {
 
   const handleSignup = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     axios
       .post(
@@ -45,6 +48,7 @@ const Signup = (props) => {
       )
       .then(
         (res) => {
+          setLoading(false);
           localStorage.setItem("userID", res.data.data.user._id);
           props.history.replace("/");
           window.location.reload(true);
@@ -52,6 +56,7 @@ const Signup = (props) => {
         (error) => {
           console.log(error.response);
           if (error.response.data.message.includes("duplicate")) {
+            setLoading(false);
             setDangerAlert(true);
             setTimeout(() => {
               setDangerAlert(false);
@@ -62,92 +67,99 @@ const Signup = (props) => {
         }
       );
   };
+  if (loading) {
+    return (
+      <div className="center-horizontally">
+        <CircularProgress />
+      </div>
+    );
+  } else {
+    return (
+      <div className="Signup">
+        <h1>
+          {" "}
+          <i class="fas fa-info-circle"></i> Sign Up if you don't have an
+          account yet!
+        </h1>
+        <form noValidate>
+          <div className="signup-data">
+            <h6>
+              {" "}
+              <i class="fas fa-user-circle"></i> Name
+            </h6>
+            <input
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              type="text"
+              value={name}
+            ></input>
 
-  return (
-    <div className="Signup">
-      <h1>
-        {" "}
-        <i class="fas fa-info-circle"></i> Sign Up if you don't have an account
-        yet!
-      </h1>
-      <form noValidate>
-        <div className="signup-data">
-          <h6>
-            {" "}
-            <i class="fas fa-user-circle"></i> Name
-          </h6>
-          <input
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            type="text"
-            value={name}
-          ></input>
+            <h6>
+              {" "}
+              <i class="far fa-envelope"></i> Email
+            </h6>
+            <input
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              type="email"
+              value={email}
+            ></input>
 
-          <h6>
-            {" "}
-            <i class="far fa-envelope"></i> Email
-          </h6>
-          <input
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            type="email"
-            value={email}
-          ></input>
+            <h6>
+              <i class="fas fa-unlock-alt"></i> Password{" "}
+              <span>(at least 8 chars)</span>
+            </h6>
+            <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              type="password"
+              value={password}
+            ></input>
 
-          <h6>
-            <i class="fas fa-unlock-alt"></i> Password{" "}
-            <span>(at least 8 chars)</span>
-          </h6>
-          <input
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            type="password"
-            value={password}
-          ></input>
+            <h6>
+              {" "}
+              <i class="fas fa-lock"></i> Confirm Password
+            </h6>
+            <input
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+              }}
+              type="password"
+              value={confirmPassword}
+            ></input>
 
-          <h6>
-            {" "}
-            <i class="fas fa-lock"></i> Confirm Password
-          </h6>
-          <input
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-            }}
-            type="password"
-            value={confirmPassword}
-          ></input>
+            <h6>
+              {" "}
+              <i class="far fa-calendar-alt"></i> Birthdate
+            </h6>
+            <input
+              onChange={(e) => {
+                setBirthdate(e.target.value);
+              }}
+              type="date"
+              value={birthdate}
+            ></input>
 
-          <h6>
-            {" "}
-            <i class="far fa-calendar-alt"></i> Birthdate
-          </h6>
-          <input
-            onChange={(e) => {
-              setBirthdate(e.target.value);
-            }}
-            type="date"
-            value={birthdate}
-          ></input>
-
-          <button
-            onClick={handleSignup}
-            id={signupDisabled ? "disabled-button" : ""}
-            disabled={signupDisabled}
-          >
-            Sign up
-          </button>
-        </div>
-      </form>
-      <Alert
-        visible={dangerAlert}
-        type="danger-alert"
-        message="There is a user with this email"
-      />
-    </div>
-  );
+            <button
+              onClick={handleSignup}
+              id={signupDisabled ? "disabled-button" : ""}
+              disabled={signupDisabled}
+            >
+              Sign up
+            </button>
+          </div>
+        </form>
+        <Alert
+          visible={dangerAlert}
+          type="danger-alert"
+          message="There is a user with this email"
+        />
+      </div>
+    );
+  }
 };
 
 export default withRouter(Signup);

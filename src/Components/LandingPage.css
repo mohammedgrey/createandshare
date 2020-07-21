@@ -5,13 +5,14 @@
 }
 
 .LandingPage {
-  /* background-image: url("https://i.pinimg.com/originals/ca/a8/cf/caa8cfe69bfa28515140cd5b78d8dd17.jpg"); */
+  /* background-image: url("https://wallpaperplay.com/walls/full/c/a/d/385399.jpg"); */
   box-shadow: inset 0 0 0 150vw rgba(0, 0, 0, 0.4);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0px 0px;
   padding: 10px 10px;
+  min-height: 100vh !important;
 }
 
 .LandingPage hr {

@@ -4,19 +4,23 @@ import { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import Alert from "./Generic/Alert";
+import { CircularProgress } from "@material-ui/core";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [dangerAlert, setDangerAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handlelogin = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     axios
       .post("/users/login", { email, password }, { withCredentials: true })
       .then(
         (res) => {
           localStorage.setItem("userID", res.data.data.user._id);
+          setLoading(false);
 
           props.history.replace("/");
           window.location.reload(true);
@@ -24,6 +28,7 @@ const Login = (props) => {
         (error) => {
           console.log(error);
           if (error.response.status === 401) {
+            setLoading(false);
             setDangerAlert(true);
             setTimeout(() => {
               setDangerAlert(false);
@@ -32,43 +37,52 @@ const Login = (props) => {
         }
       );
   };
-  return (
-    <div className="Login">
-      {/* <h1>Log in</h1> */}
-      <form noValidate>
-        <label for="email">
-          <i class="far fa-envelope"></i> Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-        <label for="password">
-          <i class="fas fa-unlock-alt"></i> Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
 
-        {/* <p className="not-auth-message"> Wrong email or password</p> */}
+  if (loading) {
+    return (
+      <div className="center-horizontally">
+        <CircularProgress />
+      </div>
+    );
+  } else {
+    return (
+      <div className="Login">
+        {/* <h1>Log in</h1> */}
+        <form noValidate>
+          <label for="email">
+            <i class="far fa-envelope"></i> Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          <label for="password">
+            <i class="fas fa-unlock-alt"></i> Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
 
-        <button type="submit" onClick={handlelogin}>
-          log in
-        </button>
+          {/* <p className="not-auth-message"> Wrong email or password</p> */}
 
-        {/* <p className="fogot-password">Forgot password?</p> */}
-      </form>
+          <button type="submit" onClick={handlelogin}>
+            log in
+          </button>
 
-      <Alert
-        visible={dangerAlert}
-        type="danger-alert"
-        message="Incorrect Email or Password"
-      />
-    </div>
-  );
+          {/* <p className="fogot-password">Forgot password?</p> */}
+        </form>
+
+        <Alert
+          visible={dangerAlert}
+          type="danger-alert"
+          message="Incorrect Email or Password"
+        />
+      </div>
+    );
+  }
 };
 
 export default withRouter(Login);

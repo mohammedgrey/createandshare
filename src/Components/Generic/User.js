@@ -16,7 +16,15 @@ const User = (props) => {
         <img src={props.image} alt="user" />
       </Link>
       <div className="user-info">
-        <Link to={`/users/${props.id}`}>{props.name}</Link>
+        <Link
+          to={
+            localStorage.getItem("userID") === props.id
+              ? "/profile"
+              : `/users/${props.id}`
+          }
+        >
+          {props.name}
+        </Link>
       </div>
     </div>
   );

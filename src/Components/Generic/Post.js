@@ -18,6 +18,9 @@ import { Button } from "@material-ui/core";
 import axios from "axios";
 import Alert from "./Alert";
 import LikesModal from "./LikesModal";
+import CommentsModal from "./CommentsModal";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import CircuilarProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,8 +44,15 @@ const Post = (props) => {
   const [liked, setLiked] = useState(undefined);
   const [loadingLike, setLoadingLike] = useState(true);
   const [likes, setLikes] = useState(props.likes);
+  const [comments, setComments] = useState(props.comments);
   const [rerenderLikesModal, setRerenderLikesModal] = useState(Math.random());
   const [modalLikesShow, setModalLikesShow] = useState(false);
+  const [modalCommentsShow, setModalCommentsShow] = useState(false);
+  const [content, setContent] = useState("");
+  const [rerenderCommentsModal, setRerenderCommentsModal] = useState(
+    Math.random()
+  );
+  const [loadingComment, setLoadingComment] = useState(false);
 
   useEffect(() => {
     // setLoadingProfile(true);
@@ -90,6 +100,27 @@ const Post = (props) => {
     }
   };
 
+  const handleAddComment = () => {
+    setLoadingComment(true);
+    axios({
+      method: "POST",
+      url: `posts/${props.id}/comment`,
+      data: { text: content, createdAt: moment().format() },
+    }).then(
+      (res) => {
+        setComments(res.data.comments);
+        setRerenderCommentsModal(Math.random());
+        setContent("");
+        setLoadingComment(false);
+      },
+      (error) => {
+        console.log(error);
+        setLoadingComment(false);
+        alert("Unexpected error");
+      }
+    );
+  };
+
   return (
     <div
       className="post-main-class"
@@ -101,6 +132,19 @@ const Post = (props) => {
         show={modalLikesShow}
         onHide={() => {
           setModalLikesShow(false);
+        }}
+      />
+
+      <CommentsModal
+        key={rerenderCommentsModal}
+        loadingComment={loadingComment}
+        postID={props.id}
+        show={modalCommentsShow}
+        handleAddComment={handleAddComment}
+        content={content}
+        setContent={setContent}
+        onHide={() => {
+          setModalCommentsShow(false);
         }}
       />
       {/* <Grid container justify="center"> */}
@@ -165,9 +209,7 @@ const Post = (props) => {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          {loadingLike ? (
-            <i class="fas fa-spinner fa-spin" />
-          ) : (
+          {loadingLike ? null : (
             <div className="like-post-class">
               <i
                 class="fas fa-star"
@@ -186,12 +228,15 @@ const Post = (props) => {
             </div>
           )}
 
-          {/* <i
-            class="far fa-comment"
+          <div
+            className="comment-post-class"
             onClick={() => {
-              console.log("comment");
+              setModalCommentsShow(true);
             }}
-          ></i> */}
+          >
+            <i class="fas fa-comment"></i>
+            <p className="num-comments-class"> {comments}</p>
+          </div>
         </CardActions>
       </Card>
       {/* </Grid> */}

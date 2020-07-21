@@ -2,6 +2,7 @@ import React from "react";
 import Post from "../Components/Generic/Post";
 import { useState, useRef, useCallback } from "react";
 import usePagination from "../Components/Generic/UsePagination";
+import CircularProgress from "@material-ui/core/CircularProgress";
 // import "./Favorites.css";
 
 const Favorites = () => {
@@ -42,6 +43,7 @@ const Favorites = () => {
                 name={post.user.name}
                 date={post.createdAt}
                 likes={post.likes}
+                comments={post.comments}
               />
             </div>
           );
@@ -58,13 +60,14 @@ const Favorites = () => {
                 name={post.user.name}
                 date={post.createdAt}
                 likes={post.likes}
+                comments={post.comments}
               />
             </div>
           );
         }
       })}
 
-      <div>{loading && <i class="fas fa-spinner fa-spin" />}</div>
+      <div>{loading && <CircularProgress />}</div>
       <div>{error && "Error"}</div>
     </div>
   );

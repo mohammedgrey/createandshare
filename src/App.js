@@ -4,6 +4,7 @@ import LandingPage from "./Components/LandingPage";
 import isLoggedIn from "./Functions/isLoggedIn";
 import { useState, useEffect } from "react";
 import InsidePages from "./Components/InsidePages";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ function App() {
   if (loading) {
     return (
       <div className="centered-div-spinner">
-        <i class="fas fa-spinner fa-spin" />
+        <CircularProgress />
       </div>
     );
   } else {

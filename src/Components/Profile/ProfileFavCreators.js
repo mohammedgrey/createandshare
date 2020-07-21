@@ -3,6 +3,7 @@ import "./Profile.css";
 import User from "../Generic/User";
 import { useState, useRef, useCallback } from "react";
 import usePagination from "../Generic/UsePagination";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const ProfileFavCreators = () => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -55,7 +56,7 @@ const ProfileFavCreators = () => {
         }
       })}
 
-      <div>{loading && <i class="fas fa-spinner fa-spin" />}</div>
+      <div>{loading && <CircularProgress />}</div>
       <div>{error && "Error"}</div>
     </div>
   );

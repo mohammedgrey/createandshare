@@ -47,3 +47,27 @@ code {
   background-size: auto;
 
 } */
+
+.center-horizontally {
+  text-align: center;
+}
+.MuiLinearProgress-colorPrimary {
+  /* color: brown !important; */
+  background-color: rgb(90, 57, 106) !important;
+}
+
+.MuiLinearProgress-barColorPrimary {
+  background-color: rgb(187, 187, 187) !important;
+}
+
+.MuiCircularProgress-colorPrimary {
+  /* background-color: rgb(90, 57, 106) !important; */
+}
+
+.MuiCircularProgress-circle {
+  color: rgb(67, 38, 81) !important;
+}
+
+/* .MuiCircularProgress-circleDisableShrink {
+  font-size: 0.9rem;
+} */

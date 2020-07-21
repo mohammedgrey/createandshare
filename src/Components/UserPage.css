@@ -12,7 +12,7 @@
   width: 200px;
   border-radius: 50%;
 }
-.user-page p {
+.user-page .other-user-bio-text {
   font-family: "Cabin Sketch", cursive;
   color: black;
   font-size: 1.3rem;

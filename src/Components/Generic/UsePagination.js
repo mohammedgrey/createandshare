@@ -31,6 +31,8 @@ const UsePagination = (url, pageNumber, type) => {
             return [...prevItems, ...res.data.data.posts];
           } else if (type === "usersLikes") {
             return [...prevItems, ...res.data.data.users];
+          } else if (type === "postComments") {
+            return [...prevItems, ...res.data.data.comments];
           } else {
             return [...prevItems, ...res.data.data.posts];
           }

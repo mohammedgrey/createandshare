@@ -5,6 +5,7 @@ import formatDate from "../../Functions/formatDate";
 import validateEmail from "../../Functions/validateEmail";
 import EditPictureModal from "./EditPictureModal";
 import Alert from "../Generic/Alert";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 class ProfileInfo extends React.Component {
   state = {
@@ -176,7 +177,7 @@ class ProfileInfo extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <i class="fas fa-spinner fa-spin" />;
+      return <LinearProgress />;
     } else {
       return (
         <div className="ProfileInfo">

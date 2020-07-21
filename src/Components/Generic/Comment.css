@@ -1,0 +1,106 @@
+.container-comment-component-class {
+  background-color: thistle;
+  padding: 5px;
+  margin-bottom: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(101, 101, 101, 1) 0%,
+    rgba(174, 166, 176, 1) 50%,
+    rgba(205, 205, 205, 1) 100%
+  );
+  border-radius: 10px;
+}
+
+.comment-component-class {
+  display: flex;
+  justify-content: left;
+}
+
+.comment-component-class img {
+  border: 2px solid white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.comment-component-class .comment-to-profile-img {
+  padding: 2px 2px;
+}
+.comment-component-class .comment-to-profile-img:hover {
+  padding: 0px 0px;
+}
+
+.comment-component-class .comment-info {
+  margin-left: 20px;
+  margin-top: 5px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.comment-component-class .comment-info a {
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+
+  /* text-transform: uppercase; */
+}
+.comment-component-class .comment-info a:hover {
+  color: white;
+}
+/* #talkbubble {
+  width: 90%;
+  height: 80px;
+  background: red;
+  position: relative;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+#talkbubble:before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 26px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-right: 26px solid red;
+  border-bottom: 13px solid transparent;
+} */
+
+p.bubble {
+  position: relative;
+  width: 95%;
+  text-align: center;
+  line-height: 1.4em;
+  margin: 10px auto;
+  background-color: #fff;
+  border: 3px solid #333;
+  border-radius: 30px;
+  font-family: sans-serif;
+  padding: 20px;
+  font-size: large;
+  font-family: "Cabin Sketch", cursive;
+  font-weight: 600;
+}
+
+p.bubble:before,
+p.bubble:after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+p.speech:before {
+  left: 35px;
+  bottom: -38px;
+  border: 18px solid;
+  border-color: #333 transparent transparent #333;
+}
+
+p.speech:after {
+  left: 38px;
+  bottom: -30px;
+  border: 15px solid;
+  border-color: #fff transparent transparent #fff;
+}

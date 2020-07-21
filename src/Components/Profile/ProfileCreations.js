@@ -4,6 +4,7 @@ import Post from "../Generic/Post";
 import { useState, useRef, useCallback } from "react";
 import usePagination from "../Generic/UsePagination";
 import CreatePost from "../Generic/CreatePost";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const ProfileCreations = () => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -45,6 +46,7 @@ const ProfileCreations = () => {
                 date={post.createdAt}
                 me
                 likes={post.likes}
+                comments={post.comments}
               />
             </div>
           );
@@ -62,13 +64,14 @@ const ProfileCreations = () => {
                 date={post.createdAt}
                 me
                 likes={post.likes}
+                comments={post.comments}
               />
             </div>
           );
         }
       })}
 
-      <div>{loading && <i class="fas fa-spinner fa-spin" />}</div>
+      <div>{loading && <CircularProgress />}</div>
       <div>{error && "Error"}</div>
     </div>
   );
