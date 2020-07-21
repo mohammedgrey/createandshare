@@ -2,27 +2,21 @@ import React from "react";
 import "./LandingPage.css";
 import "./Login";
 import "./Signup";
-import Login from "./Login";
-import Signup from "./Signup";
-const createbackground = require("../Assets/Imagaes/createbackground.jpg");
+import FrontPage from "./FrontPage";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
+import { Switch, Route } from "react-router-dom";
 
 class LandingPage extends React.Component {
   componentDidMount() {}
 
   render() {
     return (
-      <div
-        className="LandingPage"
-        style={{ backgroundImage: "url(" + createbackground + ")" }}
-      >
-        <div className="log-in">
-          <Login />
-        </div>
-        <hr />
-        <div className="sign-up">
-          <Signup />
-        </div>
-      </div>
+      <Switch>
+        <Route exact path="/" component={FrontPage} />
+        <Route path="/forgotpassword" component={ForgotPassword} />
+        <Route path="/resetpassword" component={ResetPassword} />
+      </Switch>
     );
   }
 }

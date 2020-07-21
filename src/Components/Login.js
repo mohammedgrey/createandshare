@@ -5,6 +5,7 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import Alert from "./Generic/Alert";
 import { CircularProgress } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -26,6 +27,8 @@ const Login = (props) => {
           window.location.reload(true);
         },
         (error) => {
+          setEmail("");
+          setPassword("");
           console.log(error);
           if (error.response.status === 401) {
             setLoading(false);
@@ -55,6 +58,7 @@ const Login = (props) => {
           <input
             type="email"
             name="email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></input>
           <label for="password">
@@ -63,16 +67,25 @@ const Login = (props) => {
           <input
             type="password"
             name="password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
 
           {/* <p className="not-auth-message"> Wrong email or password</p> */}
 
-          <button type="submit" onClick={handlelogin}>
+          <button
+            type="submit"
+            onClick={handlelogin}
+            id={email !== "" && password !== "" ? "" : "disabled-button"}
+            disabled={email === "" || password === ""}
+          >
             log in
           </button>
-
-          {/* <p className="fogot-password">Forgot password?</p> */}
+          <div>
+            <Link to="/forgotpassword" className="fogot-password">
+              Forgot password?
+            </Link>
+          </div>
         </form>
 
         <Alert

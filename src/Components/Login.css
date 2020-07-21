@@ -45,6 +45,7 @@
   margin-top: 20px;
   margin-bottom: 7px;
   width: 190px;
+  /* display: block; */
 }
 .Login button:focus {
   outline: none;
@@ -54,7 +55,8 @@
 }
 
 .Login .fogot-password {
-  color: rgb(135, 95, 154);
+  color: white;
+  /* display: block; */
 }
 
 .Login .fogot-password:hover {
