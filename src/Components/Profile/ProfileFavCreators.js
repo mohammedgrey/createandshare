@@ -30,31 +30,37 @@ const ProfileFavCreators = () => {
 
   return (
     <div className="ProfileFavCreators">
-      {items.map((user, index) => {
-        if (items.length === index + 1) {
-          return (
-            <div ref={lastItemElementRef}>
-              <User
-                name={user.followee.name}
-                image={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/users/${user.followee.image}`}
-                id={user.followee._id}
-                key={user.followee._id}
-              />
-            </div>
-          );
-        } else {
-          return (
-            <div>
-              <User
-                name={user.followee.name}
-                image={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/users/${user.followee.image}`}
-                id={user.followee._id}
-                key={user.followee._id}
-              />
-            </div>
-          );
-        }
-      })}
+      {!items.length && !loading ? (
+        <h3 className="nothing-to-show">No Favorite creators yet...</h3>
+      ) : (
+        <div>
+          {items.map((user, index) => {
+            if (items.length === index + 1) {
+              return (
+                <div ref={lastItemElementRef}>
+                  <User
+                    name={user.followee.name}
+                    image={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/users/${user.followee.image}`}
+                    id={user.followee._id}
+                    key={user.followee._id}
+                  />
+                </div>
+              );
+            } else {
+              return (
+                <div>
+                  <User
+                    name={user.followee.name}
+                    image={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/users/${user.followee.image}`}
+                    id={user.followee._id}
+                    key={user.followee._id}
+                  />
+                </div>
+              );
+            }
+          })}
+        </div>
+      )}
 
       <div>{loading && <CircularProgress />}</div>
       <div>{error && "Error"}</div>

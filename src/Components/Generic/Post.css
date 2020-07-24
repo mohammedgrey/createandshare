@@ -43,9 +43,12 @@
 .delete-post-button:focus {
   outline: none;
 }
+.delete-post-button:hover {
+  font-size: 1.15rem;
+}
 .delete-post-button .fa-trash-alt {
   font-size: 1.2rem;
-  color: rgb(110, 10, 10);
+  color: rgb(141, 0, 0);
 }
 .post-main-class #liked {
   color: rgb(253, 194, 10);

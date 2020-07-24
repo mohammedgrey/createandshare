@@ -79,3 +79,18 @@ code {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.nothing-to-show {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(59, 59, 59);
+}
+
+#alert {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  text-align: center !important;
+}

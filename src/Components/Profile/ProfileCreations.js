@@ -31,45 +31,53 @@ const ProfileCreations = () => {
   return (
     <div className="ProfileCreations">
       <CreatePost />
-      {items.map((post, index) => {
-        if (items.length === index + 1) {
-          return (
-            <div ref={lastItemElementRef}>
-              <Post
-                content={post.content}
-                key={post._id}
-                id={post._id}
-                image={post.image}
-                userImage={post.user.image}
-                userId={post.user._id}
-                name={post.user.name}
-                date={post.createdAt}
-                me
-                likes={post.likes}
-                comments={post.comments}
-              />
-            </div>
-          );
-        } else {
-          return (
-            <div>
-              <Post
-                content={post.content}
-                key={post._id}
-                id={post._id}
-                image={post.image}
-                userImage={post.user.image}
-                userId={post.user._id}
-                name={post.user.name}
-                date={post.createdAt}
-                me
-                likes={post.likes}
-                comments={post.comments}
-              />
-            </div>
-          );
-        }
-      })}
+      {!items.length && !loading ? (
+        <h3 className="nothing-to-show">
+          You haven't added any creations yet...
+        </h3>
+      ) : (
+        <div>
+          {items.map((post, index) => {
+            if (items.length === index + 1) {
+              return (
+                <div ref={lastItemElementRef}>
+                  <Post
+                    content={post.content}
+                    key={post._id}
+                    id={post._id}
+                    image={post.image}
+                    userImage={post.user.image}
+                    userId={post.user._id}
+                    name={post.user.name}
+                    date={post.createdAt}
+                    me
+                    likes={post.likes}
+                    comments={post.comments}
+                  />
+                </div>
+              );
+            } else {
+              return (
+                <div>
+                  <Post
+                    content={post.content}
+                    key={post._id}
+                    id={post._id}
+                    image={post.image}
+                    userImage={post.user.image}
+                    userId={post.user._id}
+                    name={post.user.name}
+                    date={post.createdAt}
+                    me
+                    likes={post.likes}
+                    comments={post.comments}
+                  />
+                </div>
+              );
+            }
+          })}
+        </div>
+      )}
 
       <div>{loading && <CircularProgress />}</div>
       <div>{error && "Error"}</div>

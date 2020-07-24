@@ -19,8 +19,7 @@ import axios from "axios";
 import Alert from "./Alert";
 import LikesModal from "./LikesModal";
 import CommentsModal from "./CommentsModal";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import CircuilarProgress from "@material-ui/core/CircularProgress";
+// const Confirm = require("react-confirm-bootstrap");
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -175,18 +174,24 @@ const Post = (props) => {
               <button
                 className="delete-post-button"
                 onClick={() => {
-                  axios.delete(`/posts/${props.id}`).then(
-                    (res) => {
-                      setDangerAlert(true);
-                      setTimeout(() => {
-                        setDangerAlert(false);
-                        window.location.reload(true);
-                      }, 1500);
-                    },
-                    (error) => {
-                      alert("unexpected error");
-                    }
+                  // eslint-disable-next-line no-restricted-globals
+                  let yesDelete = confirm(
+                    "Are you sure you want to delete this post?"
                   );
+                  if (yesDelete) {
+                    axios.delete(`/posts/${props.id}`).then(
+                      (res) => {
+                        setDangerAlert(true);
+                        setTimeout(() => {
+                          setDangerAlert(false);
+                          window.location.reload(true);
+                        }, 1500);
+                      },
+                      (error) => {
+                        alert("unexpected error");
+                      }
+                    );
+                  }
                 }}
               >
                 <i class="fas fa-trash-alt"></i>
