@@ -19,6 +19,8 @@ import axios from "axios";
 import Alert from "./Alert";
 import LikesModal from "./LikesModal";
 import CommentsModal from "./CommentsModal";
+import VideoPlayer from "./VideoPlayer";
+
 // const Confirm = require("react-confirm-bootstrap");
 
 const useStyles = makeStyles((theme) => ({
@@ -201,13 +203,25 @@ const Post = (props) => {
           title={props.name}
           subheader={moment(props.date).format("MMMM Do YYYY, h:mm:ss a")}
         />
-        {props.image !== "" && (
-          <CardMedia
-            className={classes.media}
-            image={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/posts/${props.image}`}
-            title="Paella dish"
-          />
-        )}
+
+        {props.image !== "" ? (
+          props.image.split(".")[1] === "jpeg" ||
+          props.image.split(".")[1] === "png" ||
+          props.image.split(".")[1] === "webp" ||
+          props.image.split(".")[1] === "tiff" ||
+          props.image.split(".")[1] === "heif" ? (
+            <CardMedia
+              className={classes.media}
+              image={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/posts/${props.image}`}
+              title="Paella dish"
+            />
+          ) : (
+            <VideoPlayer
+              videoPath={`${process.env.REACT_APP_BACKEND_DOMAIN}/images/posts/${props.image}`}
+            />
+          )
+        ) : null}
+
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             <p>{props.content}</p>

@@ -124,3 +124,15 @@
 .create-post .file-upload button:focus {
   outline: none;
 }
+
+.video-preview-text {
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  font-size: 1.2rem;
+  background-color: rgb(48, 221, 77);
+  color: white;
+  margin-bottom: 20px;
+  display: inline-block;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
