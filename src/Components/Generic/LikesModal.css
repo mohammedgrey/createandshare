@@ -114,3 +114,9 @@
   height: 300px;
   position: relative;
 }
+
+#contained-modal-title-vcenter {
+  font-weight: 700;
+  color: #4c1269;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}

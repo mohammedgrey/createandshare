@@ -37,6 +37,9 @@ const CommentsModal = (props) => {
       centered
       className="modal-edit-picture-class"
     >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Comments</Modal.Title>
+      </Modal.Header>
       <Modal.Body className="modal-comment-body">
         <div className="container-comments-model">
           {props.loadingComment ? (
