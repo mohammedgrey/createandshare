@@ -65,6 +65,7 @@ const NavBar = (props) => {
                     withCredentials: true,
                   });
                   localStorage.removeItem("userID");
+                  localStorage.removeItem("userToken");
                   props.history.push("/");
                   window.location.reload(true);
                 }}

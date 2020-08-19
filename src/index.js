@@ -7,6 +7,9 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+  "userToken"
+);
 
 ReactDOM.render(
   <Router>

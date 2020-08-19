@@ -7,6 +7,13 @@ import InsidePages from "./Components/InsidePages";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 function App() {
+  // chrome.cookies.get(
+  //   { url: process.env.REACT_APP_BACKEND_DOMAIN, name: "jwt" },
+  //   (cookie) => {
+  //     console.log(cookie);
+  //   }
+  // );
+  console.log();
   const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
@@ -17,7 +24,7 @@ function App() {
       setLoading(false);
       setLoggedIn(res);
     });
-  });
+  }, []);
   if (loading) {
     return (
       <div className="centered-div-spinner">

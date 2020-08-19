@@ -21,6 +21,7 @@ const Login = (props) => {
       .then(
         (res) => {
           localStorage.setItem("userID", res.data.data.user._id);
+          localStorage.setItem("userToken", `Bearer ${res.data.token}`);
           setLoading(false);
 
           props.history.replace("/");
